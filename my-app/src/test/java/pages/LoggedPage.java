@@ -102,4 +102,9 @@ public class LoggedPage extends BasePage{
 		bad_register_error.isDisplayed();
 	}
 
+	public void usernameIsDisplayed() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

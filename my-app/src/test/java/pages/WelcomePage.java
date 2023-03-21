@@ -79,6 +79,16 @@ public class WelcomePage extends BasePage{
 		btn_login.click();
 	}
 	
+	public void enterLoginUsername() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void enterLoginPassword() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void enterRegisterUsername(String username) {
 		txt_register_username.sendKeys(username);
 	}
@@ -101,5 +111,17 @@ public class WelcomePage extends BasePage{
 	public void registerErrorFormIsDisplayed() {
 		bad_register_error.isDisplayed();
 	}
+
+	public void registerErrorIsDisplayed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void imgIsDisplayed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
