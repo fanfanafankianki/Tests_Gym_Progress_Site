@@ -14,53 +14,113 @@ public class LoggedPage extends BasePage{
 	//Elements present only on this page
 	//
 	
-	@FindBy(id="form3-username")
+	//Login XPaths
+	
+	@FindBy(id="")
 	@CacheLookup
-	WebElement txt_login_username;
+	WebElement txt_displayed_username;
 
-	@FindBy(id="form3-password")
+	@FindBy(id="")
 	@CacheLookup
-	WebElement txt_login_password;
+	WebElement txt_displayed_logout;
 
-	@FindBy(xpath="//div[1]/button[@class='submit button']")
-	@CacheLookup
-	WebElement btn_login;
+	//Sidebar XPaths
 	
-	@FindBy(id="form3-username")
+	//Sidebar XPaths for user Profile
+	
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement txt_register_username;
+	WebElement sidebar_profile_add_training;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_name;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_exercise1;
 
-	@FindBy(id="form3-password")
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement txt_register_email;
+	WebElement sidebar_profile_add_training_tr_exercise2;
 	
-	@FindBy(id="form3-username")
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement txt_register_password;
-
-	@FindBy(xpath="//a[@href='/signup']")
-	@CacheLookup
-	WebElement a_register;
+	WebElement sidebar_profile_add_training_tr_exercise3;
 	
-	@FindBy(xpath="//a[@href='/password/reset']")
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement a_resetpassword;
+	WebElement sidebar_profile_add_training_tr_exercise4;
 	
-	@FindBy(xpath="//p[@class='error username-exists none']")
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement bad_login_error;
+	WebElement sidebar_profile_add_training_tr_exercise5;
 	
-	@FindBy(xpath="//p[@class='error username-exists none']")
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement bad_register_error;
+	WebElement sidebar_profile_add_training_tr_exercise6;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_exercise7;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_exercise8;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_exercise9;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_add_training_tr_add;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_training_history;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_training_history_object;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_charts;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_charts_object;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_profile_delete_profile;
+	
+	//Sidebar always existing XPaths
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_add_profile;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_bmi_calculator;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_calories_calculator;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_ffmi_calculator;
 	
 	//Constructor checks if you are on the right page 
 	public LoggedPage(WebDriver driver) throws InterruptedException {
 		super(driver);
 		PageFactory.initElements(driver, this);
 		Thread.sleep(1000);
-		if(!driver.getCurrentUrl().equals("https://lichess.org/login?referrer=/")) {
-			throw new IllegalStateException("This is not login page! The current page is " + driver.getCurrentUrl());
+		if(!driver.getCurrentUrl().equals("https://localhost/Gym_Site/logged.php")) {
+			throw new IllegalStateException("This is not logged page! The current page is " + driver.getCurrentUrl());
 		}
 
 	}

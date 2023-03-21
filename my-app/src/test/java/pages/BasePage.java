@@ -22,14 +22,69 @@ public class BasePage {
 	//Elements present on every page
 	//
 	
-	@FindBy(xpath="//h1[@class='site-title']/a")
+	
+	//Site Icon
+	@FindBy(xpath="")
 	@CacheLookup
-	WebElement a_lichess;
+	WebElement site_icon;
+	
+	//Footer
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement footer_name;
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement footer_email;
+
+	@FindBy(id="")
+	@CacheLookup
+	WebElement footer_subject;
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement footer_message;
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement footer_send;
+
+	//Github Link
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement github_link;
 	
 	//
-	
-	@FindBy(xpath="//span[@class='play']")
-	@CacheLookup
-	WebElement hov_play;
+	//Functions for every page
+	//
 
+	public void clickSiteIcon() {
+		site_icon.click();
+	}
+
+	public void clickFooterName() {
+		footer_name.click();
+	}
+	
+	public void clickFooterEmail() {
+		footer_email.click();
+	}
+	
+	public void clickFooterSubject() {
+		footer_subject.click();
+	}	
+	
+	public void clickFooterMessage() {
+		footer_message.click();
+	}	
+	
+	public void clickFooterSend() {
+		footer_send.click();
+	}
+	
+	public void clickGithubLink() {
+		github_link.click();
+	}
 }

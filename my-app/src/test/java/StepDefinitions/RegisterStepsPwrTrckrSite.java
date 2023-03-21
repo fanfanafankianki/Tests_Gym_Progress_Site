@@ -22,12 +22,6 @@ public class RegisterStepsPwrTrckrSite {
 		this.utility=utility;
 		this.driver=utility.driver;
 	}
-
-	@Given("user is on welcome page")
-	public void user_is_on_welcome_page() throws InterruptedException {
-		driver=utility.getDriver();
-		driver.navigate().to("https://lichess.org/login?referrer=/");
-	}
 	
 	@When("user enters invalid (.*) and (.*) and (.*)$")
 	public void user_enters_invalid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {

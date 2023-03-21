@@ -26,14 +26,14 @@ public class LoginStepsPwrTrckrSite {
 	@Given("user is on welcome page")
 	public void user_is_on_welcome_page() throws InterruptedException {
 		driver=utility.getDriver();
-		driver.navigate().to("https://lichess.org/login?referrer=/");
+		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 	}
 	
 	@When("user enters invalid username and password")
 	public void user_enters_unvalid_username_and_password(String username, String password) throws InterruptedException {
 		welcome = utility.getWelcomePage();
-		welcome.enterLoginUsername();
-		welcome.enterLoginPassword();
+		welcome.enterLoginUsername(username);
+		welcome.enterLoginPassword(password);
 	}
 
 	@When("user enters valid (.*) and (.*)$")

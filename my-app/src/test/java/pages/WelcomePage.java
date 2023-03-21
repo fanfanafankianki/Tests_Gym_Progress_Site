@@ -10,62 +10,84 @@ public class WelcomePage extends BasePage{
 
 	protected WebDriver driver;
 	
-	//
-	//Elements present only on this page
-	//
-	
-	@FindBy(id="form3-username")
-	@CacheLookup
-	WebElement txt_login_username;
-
-	@FindBy(id="form3-password")
-	@CacheLookup
-	WebElement txt_login_password;
-
-	@FindBy(xpath="//div[1]/button[@class='submit button']")
-	@CacheLookup
-	WebElement btn_login;
-	
-	@FindBy(id="form3-username")
-	@CacheLookup
-	WebElement txt_register_username;
-
-	@FindBy(id="form3-password")
-	@CacheLookup
-	WebElement txt_register_email;
-	
-	@FindBy(id="form3-username")
-	@CacheLookup
-	WebElement txt_register_password;
-
-	@FindBy(xpath="//a[@href='/signup']")
-	@CacheLookup
-	WebElement a_register;
-	
-	@FindBy(xpath="//a[@href='/password/reset']")
-	@CacheLookup
-	WebElement a_resetpassword;
-	
-	@FindBy(xpath="//p[@class='error username-exists none']")
-	@CacheLookup
-	WebElement bad_login_error;
-	
-	@FindBy(xpath="//p[@class='error username-exists none']")
-	@CacheLookup
-	WebElement bad_register_error;
-	
 	//Constructor checks if you are on the right page 
 	public WelcomePage(WebDriver driver) throws InterruptedException {
 		super(driver);
 		PageFactory.initElements(driver, this);
 		Thread.sleep(1000);
-		if(!driver.getCurrentUrl().equals("https://lichess.org/login?referrer=/")) {
-			throw new IllegalStateException("This is not login page! The current page is " + driver.getCurrentUrl());
+		if(!driver.getCurrentUrl().equals("http://localhost/Gym_Site/welcome.php")) {
+			throw new IllegalStateException("This is not welcome page! The current page is " + driver.getCurrentUrl());
 		}
 
 	}
 	
+	//
+	//Elements present only on this page
+	//
+	
+	//Login XPaths
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement txt_login_username;
+
+	@FindBy(id="")
+	@CacheLookup
+	WebElement txt_login_password;
+
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement btn_login;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement bad_login_error;
+	
+	//Register XPaths
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement txt_register_username;
+
+	@FindBy(id="")
+	@CacheLookup
+	WebElement txt_register_email;
+	
+	@FindBy(id="")
+	@CacheLookup
+	WebElement txt_register_password;
+
+	@FindBy(id="")
+	@CacheLookup
+	WebElement checkbox_register;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement btn_register;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement bad_register_error;
+
+	//Other XPaths - sidebar
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_greetings;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_register;
+	
+	@FindBy(xpath="")
+	@CacheLookup
+	WebElement sidebar_statue;
+	
+	//
 	//Functions only for this page
+	//
+	
+	//Login Functions
 	
 	public void enterLoginUsername(String username) {
 		txt_login_username.sendKeys(username);
@@ -79,15 +101,11 @@ public class WelcomePage extends BasePage{
 		btn_login.click();
 	}
 	
-	public void enterLoginUsername() {
-		// TODO Auto-generated method stub
-		
+	public void loginErrorFormIsDisplayed() {
+		bad_login_error.isDisplayed();
 	}
 	
-	public void enterLoginPassword() {
-		// TODO Auto-generated method stub
-		
-	}
+	//Register functions
 	
 	public void enterRegisterUsername(String username) {
 		txt_register_username.sendKeys(username);
@@ -100,23 +118,34 @@ public class WelcomePage extends BasePage{
 	public void enterRegisterPassword(String password) {
 		txt_register_password.sendKeys(password);
 	}
+
+	public void clickCheckboxRegister() {
+		checkbox_register.click();
+	}
 	
 	public void clickRegister() {
-		a_register.click();
-	}
-	
-	public void loginErrorFormIsDisplayed() {
-		bad_login_error.isDisplayed();
-	}
-	public void registerErrorFormIsDisplayed() {
-		bad_register_error.isDisplayed();
+		btn_register.click();
 	}
 
 	public void registerErrorIsDisplayed() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	//Other functions - sidebar
+	
+	public void clickSidebarGreetings() {
+		sidebar_greetings.click();
+	}
+	
+	public void clickSidebarRegister() {
+		sidebar_register.click();
+	}
+	
+	public void clickSidebarStatue() {
+		sidebar_statue.click();
+	}
+	
 	public void imgIsDisplayed() {
 		// TODO Auto-generated method stub
 		
