@@ -27,61 +27,73 @@ public class WelcomePage extends BasePage{
 	
 	//Login XPaths
 	
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"login_login\"]")
 	@CacheLookup
 	WebElement txt_login_username;
 
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"login_password\"]")
 	@CacheLookup
 	WebElement txt_login_password;
 
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[@id=\"login_submit\"]")
 	@CacheLookup
 	WebElement btn_login;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//div[@id=\"login_error\"]")
 	@CacheLookup
 	WebElement bad_login_error;
 	
 	//Register XPaths
 	
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"register_username\"]")
 	@CacheLookup
 	WebElement txt_register_username;
 
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"register_email\"]")
 	@CacheLookup
 	WebElement txt_register_email;
 	
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"register_password\"]")
 	@CacheLookup
 	WebElement txt_register_password;
 
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"register_accept-terms\"]")
 	@CacheLookup
 	WebElement checkbox_register;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//input[@type=\"submit\" and @name=\"submitRegistration\"]")
 	@CacheLookup
 	WebElement btn_register;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//p[@id=\"register_error\"]")
 	@CacheLookup
 	WebElement bad_register_error;
 
 	//Other XPaths - sidebar
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//a[@onclick=\"loadWelcomePage()\"]")
 	@CacheLookup
-	WebElement sidebar_greetings;
+	WebElement sidebar_greetings;	
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//div[@id=\"welcome_site\"]")
+	@CacheLookup
+	WebElement sidebar_greetings_form;
+	
+	@FindBy(xpath="//a[@onclick=\"createRegisterElement()\"]")
 	@CacheLookup
 	WebElement sidebar_register;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//form[@id=\"registration\"]")
+	@CacheLookup
+	WebElement sidebar_register_form;
+	
+	@FindBy(xpath="//a[@onclick=\"loadRulesPage()\"]")
 	@CacheLookup
 	WebElement sidebar_statue;
+	
+	@FindBy(xpath="//pre[@id=\"rules\"]")
+	@CacheLookup
+	WebElement sidebar_statue_form;
 	
 	//
 	//Functions only for this page
@@ -103,6 +115,19 @@ public class WelcomePage extends BasePage{
 	
 	public void loginErrorFormIsDisplayed() {
 		bad_login_error.isDisplayed();
+	}
+	
+	public void loginWithCorrectValues(String username, String password) {
+		enterLoginUsername(username);
+		enterLoginPassword(password);
+		clickLogin();
+	}
+	
+	public void loginWithIncorrectValues(String username) {
+		enterLoginUsername(username);
+		enterLoginPassword("blabla");
+		clickLogin();
+		loginErrorFormIsDisplayed();
 	}
 	
 	//Register functions
@@ -128,28 +153,52 @@ public class WelcomePage extends BasePage{
 	}
 
 	public void registerErrorIsDisplayed() {
-		// TODO Auto-generated method stub
-		
+		bad_register_error.isDisplayed();
+	}
+	
+	public void registerWithCorrectValues(String username, String email, String password) {
+		enterRegisterUsername(username);
+		enterRegisterEmail(email);
+		enterRegisterPassword(password);
+		clickCheckboxRegister();
+		clickRegister();
+	}
+	
+	public void registerWithIncorrectValues(String username, String password) {
+		enterRegisterUsername(username);
+		enterRegisterEmail("email");
+		enterRegisterPassword(password);
+		clickCheckboxRegister();
+		clickRegister();
+		registerErrorIsDisplayed();
 	}
 	
 	//Other functions - sidebar
 	
 	public void clickSidebarGreetings() {
 		sidebar_greetings.click();
+	}	
+	
+	public void SidebarGreetingsForm_isDisplayed() {
+		sidebar_greetings_form.isDisplayed();
 	}
 	
 	public void clickSidebarRegister() {
 		sidebar_register.click();
 	}
 	
+	public void SidebarRegisterForm_isDisplayed() {
+		sidebar_register_form.isDisplayed();
+	}
+	
 	public void clickSidebarStatue() {
 		sidebar_statue.click();
 	}
 	
-	public void imgIsDisplayed() {
-		// TODO Auto-generated method stub
-		
+	public void SidebarStatueForm_isDisplayed() {
+		sidebar_statue_form.isDisplayed();
 	}
+
 
 
 

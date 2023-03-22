@@ -24,35 +24,35 @@ public class BasePage {
 	
 	
 	//Site Icon
-	@FindBy(xpath="")
+	@FindBy(xpath="//img[@id=\"logo\"]")
 	@CacheLookup
 	WebElement site_icon;
 	
 	//Footer
 	
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"Name_footer\"]")
 	@CacheLookup
 	WebElement footer_name;
 	
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"Email_footer\"]")
 	@CacheLookup
 	WebElement footer_email;
 
-	@FindBy(id="")
+	@FindBy(xpath="//input[@id=\"Subject_footer\"]")
 	@CacheLookup
 	WebElement footer_subject;
 	
-	@FindBy(id="")
+	@FindBy(xpath="//textarea[@id=\"Message_footer\"]")
 	@CacheLookup
 	WebElement footer_message;
 	
-	@FindBy(id="")
+	@FindBy(xpath="//button[@id=\"Submit_footer\"]")
 	@CacheLookup
 	WebElement footer_send;
 
 	//Github Link
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//a[@id=\"github\"]")
 	@CacheLookup
 	WebElement github_link;
 	
@@ -60,28 +60,41 @@ public class BasePage {
 	//Functions for every page
 	//
 
+	
+	public void siteIcon_IsDisplayed() {
+		site_icon.isDisplayed();
+	}
+	
 	public void clickSiteIcon() {
 		site_icon.click();
 	}
 
-	public void clickFooterName() {
-		footer_name.click();
+	public void sendKeys_FooterName(String name) {
+		footer_name.sendKeys(name);
 	}
 	
-	public void clickFooterEmail() {
-		footer_email.click();
+	public void sendKeys_FooterEmail(String email) {
+		footer_email.sendKeys(email);
 	}
 	
-	public void clickFooterSubject() {
-		footer_subject.click();
+	public void sendKeys_FooterSubject(String subject) {
+		footer_subject.sendKeys(subject);
 	}	
 	
-	public void clickFooterMessage() {
-		footer_message.click();
+	public void sendKeys_FooterMessage(String message) {
+		footer_message.sendKeys(message);
 	}	
 	
 	public void clickFooterSend() {
 		footer_send.click();
+	}
+	
+	public void sendFooterMessage(String name, String email, String subject, String message) {
+		sendKeys_FooterName(name);
+		sendKeys_FooterEmail(email);
+		sendKeys_FooterSubject(subject);
+		sendKeys_FooterMessage(message);
+		clickFooterSend();
 	}
 	
 	public void clickGithubLink() {

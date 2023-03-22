@@ -1,5 +1,4 @@
 #Author: bartosz.grzegorczyk97@gmail.com
-
 Feature: Feature to test login functionality
 
 	Background: 
