@@ -62,6 +62,7 @@ public class RegisterSteps {
 		welcome = utility.getWelcomePage();
 		Thread.sleep(2);
 		welcome.registerErrorIsNotDisplayed();
+		utility.driverTeardown(driver);
 	}
 	
 	@Then("register error text is displayed")

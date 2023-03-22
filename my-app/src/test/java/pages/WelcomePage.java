@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -157,8 +158,18 @@ public class WelcomePage extends BasePage{
 	}
 	
 	public boolean registerErrorIsNotDisplayed() {
-	    return !bad_register_error.isDisplayed() ? true : false;
+	    try {
+	        WebElement element = bad_register_error;
+	        if (element.isDisplayed()) {
+	            throw new AssertionError("Register error text is displayed");
+	        }
+	        return true;
+	    } catch (NoSuchElementException e) {
+	        return true;
+	    }
 	}
+
+
 	
 	public void registerWithCorrectValues(String username, String email, String password) {
 		enterRegisterUsername(username);
