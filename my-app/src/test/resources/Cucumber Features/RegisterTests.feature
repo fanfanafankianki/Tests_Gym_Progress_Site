@@ -6,21 +6,24 @@ Feature: Feature to test register functionality
 	  
 	@Register
   Scenario: Check register is succesfull with valid credentials
-    When user enters valid <username> and <email> and <password>
+    When user enter valid <username> and <email> and <password>
+    And user clicks register checkbox    
     And click on register button
-    Then user is navigated to the welcome page
-    And welcome page is displayed
+    Then welcome page is displayed
+    And register error text is not displayed     
 
     Examples:  
     | username | email | password |
-    | TestingAccount321 | kuku@gmail.com | kukuruku |
+    | TestingAccount321ssssss | kukssssssu@gmail.com | kukuruku |
     
 	@Register
   Scenario: Check register is unsuccesfull with invalid credentials
-    When user enters unvalid <username> and <email> and <password>
+    When user enter invalid <username> and <email> and <password>
+    And user clicks register checkbox       
     And click on register button
-    Then register error text is displayed 
-    
+    Then welcome page is displayed
+    And register error text is displayed 
+    	
     Examples:  
     | username | email | password |
     | TestingAccount321 | kuku@gmail.com | kukuruku |

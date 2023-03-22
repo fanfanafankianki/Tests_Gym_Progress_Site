@@ -23,20 +23,26 @@ public class RegisterSteps {
 		this.driver=utility.driver;
 	}
 	
-	@When("user enters invalid (.*) and (.*) and (.*)$")
-	public void user_enters_invalid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {
+	@When("user enter invalid (.*) and (.*) and (.*)$")
+	public void user_enter_invalid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {
 		welcome = utility.getWelcomePage();
 		welcome.enterRegisterUsername(username);
 		welcome.enterRegisterEmail(email);
 		welcome.enterRegisterPassword(password);
 	}
 
-	@When("user enters valid (.*) and (.*) and (.*)$")
-	public void user_enters_valid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {
+	@When("user enter valid (.*) and (.*) and (.*)$")
+	public void user_enter_valid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {
 		welcome = utility.getWelcomePage();
 		welcome.enterRegisterUsername(username);
 		welcome.enterRegisterEmail(email);
 		welcome.enterRegisterPassword(password);
+	}
+	
+	@When("user clicks register checkbox")
+	public void user_clicks_register_checkbox() throws InterruptedException {
+		welcome = utility.getWelcomePage();
+		welcome.clickCheckboxRegister();
 	}
 
 	@And("click on register button")
@@ -46,16 +52,16 @@ public class RegisterSteps {
 
 	}
 
-	@Then("user is navigated to the welcome page")
-	public void user_is_navigated_to_the_welcome_page() throws InterruptedException {
-		logged = utility.getLoggedPage();
-	}
-
 	@And("welcome page is displayed")
 	public void welcome_page_is_displayed() throws InterruptedException {
 		welcome = utility.getWelcomePage();
-		welcome.imgIsDisplayed();
-		utility.driverTeardown(driver);
+	}
+	
+	@Then("register error text is not displayed")
+	public void register_error_text_is_not_displayed() throws InterruptedException {
+		welcome = utility.getWelcomePage();
+		Thread.sleep(2);
+		welcome.registerErrorIsNotDisplayed();
 	}
 	
 	@Then("register error text is displayed")

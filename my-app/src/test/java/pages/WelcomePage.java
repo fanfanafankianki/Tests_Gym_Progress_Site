@@ -156,6 +156,10 @@ public class WelcomePage extends BasePage{
 		bad_register_error.isDisplayed();
 	}
 	
+	public boolean registerErrorIsNotDisplayed() {
+	    return !bad_register_error.isDisplayed() ? true : false;
+	}
+	
 	public void registerWithCorrectValues(String username, String email, String password) {
 		enterRegisterUsername(username);
 		enterRegisterEmail(email);
