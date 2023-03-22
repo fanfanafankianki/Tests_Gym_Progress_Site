@@ -11,14 +11,14 @@ import io.cucumber.java.en.When;
 import pages.WelcomePage;
 import pages.LoggedPage;
 
-public class LoginStepsPwrTrckrSite {
+public class ProfileCreationSteps {
 	
 	WebDriver driver = null;
 	WelcomePage welcome;
 	LoggedPage logged;
 	private SeleniumUtility utility;
 	
-	public LoginStepsPwrTrckrSite(StepDefinitions.SeleniumUtility utility) {
+	public ProfileCreationSteps(StepDefinitions.SeleniumUtility utility) {
 		this.utility=utility;
 		this.driver=utility.driver;
 	}
