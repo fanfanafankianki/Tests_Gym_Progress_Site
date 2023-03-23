@@ -1,8 +1,6 @@
 #Author: bartosz.grzegorczyk97@gmail.com
 Feature: Feature to deletion of new objects - history of training, training and profile.
 
-
-    
   @Profile
   Scenario: Check user can delete training 
     Given user is on logged page  
