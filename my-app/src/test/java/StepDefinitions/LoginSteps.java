@@ -29,8 +29,8 @@ public class LoginSteps {
 		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 	}
 	
-	@When("user enters invalid username and password")
-	public void user_enters_unvalid_username_and_password(String username, String password) throws InterruptedException {
+	@When("user enters invalid (.*) and (.*)$")
+	public void user_enters_invalid_username_and_password(String username, String password) throws InterruptedException {
 		welcome = utility.getWelcomePage();
 		welcome.enterLoginUsername(username);
 		welcome.enterLoginPassword(password);
@@ -63,6 +63,7 @@ public class LoginSteps {
 	
 	@Then("login error text is displayed")
 	public void login_error_text_is_displayed() throws InterruptedException {
-		logged = utility.getLoggedPage();
+		welcome.loginErrorFormIsDisplayed();
+		utility.driverTeardown(driver);
 	}
 }

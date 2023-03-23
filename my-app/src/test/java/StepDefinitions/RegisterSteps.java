@@ -60,7 +60,7 @@ public class RegisterSteps {
 	@Then("register error text is not displayed")
 	public void register_error_text_is_not_displayed() throws InterruptedException {
 		welcome = utility.getWelcomePage();
-		Thread.sleep(2);
+		Thread.sleep(1);
 		welcome.registerErrorIsNotDisplayed();
 		utility.driverTeardown(driver);
 	}

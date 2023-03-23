@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class LoggedPage extends BasePage{
 
@@ -259,7 +260,7 @@ public class LoggedPage extends BasePage{
 		super(driver);
 		PageFactory.initElements(driver, this);
 		Thread.sleep(1000);
-		if(!driver.getCurrentUrl().equals("https://localhost/Gym_Site/logged.php")) {
+		if(!driver.getCurrentUrl().equals("http://localhost/Gym_Site/logged.php")) {
 			throw new IllegalStateException("This is not logged page! The current page is " + driver.getCurrentUrl());
 		}
 
@@ -440,20 +441,21 @@ public class LoggedPage extends BasePage{
 		sidebar_bmi_calculator.click();
 	}
 	
-	public void sendKeys_SidebarBMICalculator_Weight_Text(String weight) {
-		sidebar_bmi_calculator_weight_text.sendKeys(weight);
+	public void sendKeys_SidebarBMICalculator_Weight_Text(Integer weight) {
+	    sidebar_bmi_calculator_weight_text.sendKeys(String.valueOf(weight));
 	}
+
 	
-	public void sendKeys_SidebarBMICalculator_Height_Text(String height) {
-		sidebar_bmi_calculator_height_text.sendKeys(height);
+	public void sendKeys_SidebarBMICalculator_Height_Text(Integer height) {
+		sidebar_bmi_calculator_height_text.sendKeys(String.valueOf(height));
 	}
 	
 	public void clickSidebarBMICalculatorTextSend() {
 		sidebar_bmi_calculator_text_send.click();
 	}
 	
-	public void SidebarBMICalculatorAnswerIsDisplayed(String answer) {
-		sidebar_bmi_calculator_text_answer.isDisplayed(answer);
+	public void SidebarBMICalculatorAnswerIsDisplayed() {
+		sidebar_bmi_calculator_text_answer.isDisplayed();
 	}
 	
 	public void testSidebarBMICalculator(String weight, String height, String fat, String answer) {
@@ -470,32 +472,34 @@ public class LoggedPage extends BasePage{
 		sidebar_calories_calculator.click();
 	}
 	
-	public void sendKeys_SidebarCaloriesCalculator_Weight_Text(String weight) {
-		sidebar_calories_calculator_weight_text.sendKeys(weight);
+	public void sendKeys_SidebarCaloriesCalculator_Weight_Text(Integer weight) {
+		sidebar_calories_calculator_weight_text.sendKeys(String.valueOf(weight));
 	}
 	
-	public void sendKeys_SidebarCaloriesCalculator_Height_Text(String height) {
-		sidebar_calories_calculator_height_text.sendKeys(height);
+	public void sendKeys_SidebarCaloriesCalculator_Height_Text(Integer height) {
+		sidebar_calories_calculator_height_text.sendKeys(String.valueOf(height));
 	}
 	
-	public void sendKeys_SidebarCaloriesCalculator_Age_Text(String age) {
-		sidebar_calories_calculator_age_text.sendKeys(age);
+	public void sendKeys_SidebarCaloriesCalculator_Age_Text(Integer age) {
+		sidebar_calories_calculator_age_text.sendKeys(String.valueOf(age));
 	}
 	
 	public void choose_SidebarCaloriesCalculator_Sex(String sex) {
-		sidebar_calories_calculator_sex.choose(sex);
+	    Select genderSelect = new Select(sidebar_calories_calculator_sex);
+	    genderSelect.selectByValue(sex);
 	}
 	
 	public void choose_SidebarCaloriesCalculator_Activity(String age) {
-		sidebar_calories_calculator_activity.choose(age);
+	    Select ageSelect = new Select(sidebar_calories_calculator_activity);
+	    ageSelect.selectByValue(age);
 	}
 	
 	public void clickSidebarCaloriesCalculatorTextSend() {
 		sidebar_calories_calculator_text_send.click();
 	}
 	
-	public void SidebarCaloriesCalculatorAnswerIsDisplayed(String answer) {
-		sidebar_calories_calculator_text_answer.isDisplayed(answer);
+	public void SidebarCaloriesCalculatorAnswerIsDisplayed() {
+		sidebar_calories_calculator_text_answer.isDisplayed();
 	}
 	
 	public void testSidebarCaloriesCalculator(String weight, String height, String age, String answer, String sex, String activity) {
@@ -515,24 +519,24 @@ public class LoggedPage extends BasePage{
 		sidebar_ffmi_calculator.click();
 	}
 	
-	public void sendKeys_SidebarFFMICalculator_Weight_Text(String weight) {
-		sidebar_ffmi_calculator_weight_text.sendKeys(weight);
+	public void sendKeys_SidebarFFMICalculator_Weight_Text(Integer weight) {
+		sidebar_ffmi_calculator_weight_text.sendKeys(String.valueOf(weight));
 	}
 	
-	public void sendKeys_SidebarFFMICalculator_Height_Text(String height) {
-		sidebar_ffmi_calculator_height_text.sendKeys(height);
+	public void sendKeys_SidebarFFMICalculator_Height_Text(Integer height) {
+		sidebar_ffmi_calculator_height_text.sendKeys(String.valueOf(height));
 	}
 	
-	public void sendKeys_SidebarFFMICalculator_Fat_Text(String fat) {
-		sidebar_ffmi_calculator_fat_text.sendKeys(fat);
+	public void sendKeys_SidebarFFMICalculator_Fat_Text(Integer fat) {
+		sidebar_ffmi_calculator_fat_text.sendKeys(String.valueOf(fat));
 	}
 	
 	public void clickSidebarFFMICalculatorTextSend() {
 		sidebar_ffmi_calculator_text_send.click();
 	}
 	
-	public void SidebarFFMICalculatorAnswerIsDisplayed(String answer) {
-		sidebar_ffmi_calculator_text_answer.isDisplayed(answer);
+	public void SidebarFFMICalculatorAnswerIsDisplayed() {
+		sidebar_ffmi_calculator_text_answer.isDisplayed();
 	}
 	
 	public void testSidebarFFMICalculator(String weight, String height, String fat, String answer) {

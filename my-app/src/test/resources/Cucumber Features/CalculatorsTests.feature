@@ -7,37 +7,38 @@ Feature: Feature to test BMI, Calories and FFMI calculators
 	  
 	@Calculators
   Scenario: Check BMI calculator is working properly
-    When user clicks "BMI Calculator"
+    When user clicks BMI Calculator
     And user inputs <weight> and <height>
-    And user clicks "Calculate BMI" button
+    And user clicks Calculate BMI button
     Then BMI Calculator answer is displayed 
 
     Examples:  
     | weight | height |
-    | TestingAccount321 | sss |
+    | 10 | 10 |
     
 	@Calculators
   Scenario: Check Calories calculator is working properly
-    When user clicks "Calories Calculator"
+    When user clicks Calories Calculator
     And user inputs <weight> and <height> and <age>
-    And user chooses sex and activity in dropbox
-    And user clicks "Calculate your caloric needs" button
+    And user chooses sex <sex> and activity <activity> in dropbox
+    And user clicks Calculate your caloric needs button
     Then Calories Calculator answer is displayed 
 
     Examples:  
-    | weight | height | age |
-    | TestingAccount321 | sss | sds |
+    | weight | height | age | sex    | activity        |
+    | 10     | 11     | 22  | Women  | Light activity  |
+
     
 	@Calculators
   Scenario: Check FFMI calculator is working properly
-    When user clicks "FFMI Calculator"
-    And user inputs <weight> and <height> and <fatlevel>
-    And user clicks "Calculate FFMI" button
-    Then BMI Calculator answer is displayed 
+    When user clicks FFMI Calculator
+    And user input <weight> and <height> and <fatlevel>
+    And user clicks Calculate FFMI button
+    Then FFMI Calculator answer is displayed 
 
     Examples:  
     | weight | height | fatlevel |
-    | TestingAccount321 | sss | sss |
+    | 31     | 12     | 32       |
     
     
 

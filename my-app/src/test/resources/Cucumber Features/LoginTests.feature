@@ -13,7 +13,7 @@ Feature: Feature to test login functionality
 
     Examples:  
     | username | password |
-    | TestingAccount321 | Lichesstesting123 |
+    | Bartek | bartek |
     
 	@Login
   Scenario: Check login is unsuccesfull with invalid credentials
@@ -23,4 +23,4 @@ Feature: Feature to test login functionality
     
     Examples:  
     | username | password |
-    | TestingAccount321 | Lichesstesting123 |
+    | staruch | Lichesstesting123 |
