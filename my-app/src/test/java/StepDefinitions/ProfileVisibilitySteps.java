@@ -23,5 +23,51 @@ public class ProfileVisibilitySteps {
 		this.driver=utility.driver;
 	}
 
+	@Given("user clicks Chart button")
+	public void user_clicks_chart_button() throws InterruptedException {
+		logged = utility.getLoggedPage();
+		logged.clickSidebarProfileCharts();
+	}
+	
+	@When("user clicks Training1")
+	public void user_clicks_training1() {
+		logged.clickSidebarProfileChartsObject();
+	}
+	
+	@When("user clicks <exercisename>")
+	public void user_clicks_exercisename() {
+		logged.clickSidebarProfileChartsObjectExercise();
+	}
+	
+	@Then("chart is displayed")
+	public void chart_is_displayed() {
+		logged.checkSidebarProfileChartsObjectExerciseChart_is_displayed();
+		utility.driverTeardown(driver);
+	}
+	
+	@Given("user clicks Training history button")
+	public void user_clicks_training_history_button() throws InterruptedException {
+		logged = utility.getLoggedPage();
+		logged.clickSidebarProfileTrainingHistory();
+	}
+	
+	@When("user click trainingname")
+	public void user_click_training() {
+		logged.clickSidebarProfileTrainingHistoryObject();
+	}
+	
+	@When("user clicks training date")
+	public void user_clicks_training_date() {
+		logged.clickSidebarProfileTrainingHistoryObjectDate();
+	}
+	
+	@Then("history table is displayed")
+	public void history_table_is_displayed() {
+		logged.checkSidebarProfileHistoryObjectDateTable_is_displayed();
+		utility.driverTeardown(driver);
+	}
+
+
+	
 
 }

@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import StepDefinitions.SeleniumUtility;
@@ -22,6 +23,73 @@ public class ProfileDeletionSteps {
 		this.utility=utility;
 		this.driver=utility.driver;
 	}
+	
+	@Given("user clicked Training1")
+	public void user_clicked_training1() throws InterruptedException {
+		logged = utility.getLoggedPage();
+	    logged.clickSidebarProfileTrainingHistoryObject();
+	}
+	
+	@When("user clicks Delete this history record! and clicks Ok in first and second checkbox")
+	public void user_clicks_delete_this_history_record_and_clicks_ok_in_first_and_second_checkbox() throws InterruptedException {
+	    logged.clickSidebarProfileTrainingHistoryObjectDateDelete();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        
+        Thread.sleep(2000);
+        // prze³¹cz siê na drugi alert i zaakceptuj go
+        alert = driver.switchTo().alert();
+        alert.accept();
+	}
+
+
+	@When("user clicks Delete Profile")
+	public void user_clicks_delete_profile() throws InterruptedException {
+	    logged.clickSidebarProfileDeleteProfile();
+	}
+	
+	@Then("profile name is not displayed")
+	public void profile_name_is_not_displayed() {
+		logged.isProfileNotDisplayed();
+	}
+	
+	@When("user clicks Delete Profile and clicks Ok in first and second checkbox")
+	public void user_clicks_delete_profile_and_clicks_ok_in_first_and_second_checkbox() throws InterruptedException {
+		logged = utility.getLoggedPage();
+	    logged.clickSidebarProfileDeleteProfile();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        
+        Thread.sleep(2000);
+        // prze³¹cz siê na drugi alert i zaakceptuj go
+        alert = driver.switchTo().alert();
+        alert.accept();
+	}
+	
+	@Given("user clicking Training1")
+	public void user_clicking_training1() throws InterruptedException {
+		logged = utility.getLoggedPage();
+		logged.clickSidebarProfileTraining();
+	}
+	
+	@When("user clicks Delete this training! and clicks Ok in first and second checkbox")
+	public void user_clicks_delete_this_training_and_clicks_ok_in_first_and_second_checkbox() throws InterruptedException {
+		logged.clickSidebarProfileTrainingDelete();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        
+        Thread.sleep(2000);
+        // prze³¹cz siê na drugi alert i zaakceptuj go
+        alert = driver.switchTo().alert();
+        alert.accept();
+	}
+	
+	@Then("training name is not displayed")
+	public void training_name_is_not_displayed() {
+
+	}
+
+
 
 
 }

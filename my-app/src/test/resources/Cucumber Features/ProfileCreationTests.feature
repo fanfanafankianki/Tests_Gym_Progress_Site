@@ -13,14 +13,13 @@ Feature: Feature to test adding new objects - profile, training and history of t
     And profile have <name> inserted by user 
 
     Examples:  
-      | name |
+      | name              |
       | TestingAccount321 |
 
   @Profile
   Scenario: Check user can add new training in profile
     When user clicks Add training button
     And user insert training informations into textboxes
-    And user clicks Add Training button
     Then new training is created
 
   @Profile
@@ -32,5 +31,5 @@ Feature: Feature to test adding new objects - profile, training and history of t
     
     Examples:  
       | trainingname |
-      | trening1|    
+      | trening1     |    
     

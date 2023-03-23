@@ -47,6 +47,49 @@ public class ProfileCreationSteps {
 	@Then("profile have (.*) inserted by user$")
 	public void profile_have_profilename_inserted_by_user(String profilename) {
 	    logged.isTextPresentInProfile(profilename);
+		utility.driverTeardown(driver);
 	}
 
+	@When("user clicks Add training button")
+	public void user_clicks_add_training_button() throws InterruptedException {
+		logged = utility.getLoggedPage();
+		logged.clickSidebarProfileAddTraining();
+	}
+	
+	@When("user insert training informations into textboxes")
+	public void user_insert_training_informations_into_textboxes() {
+		logged.addTrainingToProfile("Training1","Exercise1","Exercise2","Exercise3");
+	}
+	
+	@Then("new training is created")
+	public void new_training_is_created() {
+	    logged.isTextPresentInProfile("Training1");
+		utility.driverTeardown(driver);
+	}
+	
+	@When("user clicks trening1 button")
+	public void user_clicks_trening1_button() throws InterruptedException {
+		logged = utility.getLoggedPage();
+		Thread.sleep(1000);
+		logged.clickSidebarProfileTraining();
+	}
+	
+	@When("user insert training history informations into chooseboxes")
+	public void user_insert_training_history_informations_into_chooseboxes() {
+		logged.chooseSidebarProfileTrainingWeightAndReps();
+	}
+	
+	@When("user clicks Send button")
+	public void user_clicks_send_button() {
+		logged.clickSidebarProfileTrainingSend();
+	}
+	
+	@Then("user is redirected to logged page")
+	public void user_is_redirected_to_logged_page() throws InterruptedException {
+		Thread.sleep(200);
+		logged = utility.getLoggedPage();
+		utility.driverTeardown(driver);
+	}
+
+	
 }

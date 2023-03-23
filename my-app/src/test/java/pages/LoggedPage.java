@@ -1,5 +1,8 @@
 package pages;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -31,7 +34,7 @@ public class LoggedPage extends BasePage{
 	@CacheLookup
 	WebElement sidebar_profile;
 
-	@FindBy(xpath="(//a[starts-with(@onclick, \"loadTrainingDiv(\") and contains(@onclick, \")\") and contains(@class, \"css-bar-item\") and contains(@class, \"css-button\") and contains(@class, \"css-show\")])[1]")
+	@FindBy(xpath="(//a[contains(@onclick, 'loadTrainingDiv(') and @href='#'])[1]")
 	@CacheLookup
 	WebElement sidebar_profile_training;
 
@@ -62,6 +65,10 @@ public class LoggedPage extends BasePage{
 	@FindBy(xpath="//input[@type=\"submit\" and @name=\"SendTrainingWithExercises\" and @value=\"Send\"]")
 	@CacheLookup
 	WebElement sidebar_profile_training_exercise1_send;
+	
+	@FindBy(xpath="//a[starts-with(@onclick,\"confirmTrainingDeletion(\") and contains(@onclick, \")\") and @href=\"#\"][1]")
+	@CacheLookup
+	WebElement sidebar_profile_training_delete;
 	
 	//Sidebar XPaths for add training
 	
@@ -130,6 +137,10 @@ public class LoggedPage extends BasePage{
 	@FindBy(xpath="//a[starts-with(@onclick, \"confirmTrainingHistoryDeletion(\") and contains(@onclick, \")\") and @href=\"#\"]")
 	@CacheLookup
 	WebElement sidebar_profile_training_history_object_date_delete;
+	
+	@FindBy(id="training_history_table")
+	@CacheLookup
+	WebElement sidebar_profile_training_history_object_date_table;
 	
 	//Sidebar XPaths for training charts
 	
@@ -291,12 +302,36 @@ public class LoggedPage extends BasePage{
 	    return elementText.contains(profilename);
 	}
 	
+	public boolean isProfileNotDisplayed() {
+		try {
+		WebElement element = sidebar_profile;
+		if (element.isDisplayed() && element.getText().contains("TestingAccount321")) {
+			throw new AssertionError("TestingAccount321 element is displayed");
+		}
+		return true;
+		} catch (NoSuchElementException e) {
+		return true;
+		}
+	}
+	
 	//Sidebar
 	
 	//Created profile functions
 	
 	public void clickSidebarProfileTraining() {
 		sidebar_profile_training.click();
+	}
+	
+	public boolean isProfileTrainingNotDisplayed() {
+		try {
+		WebElement element = sidebar_profile_training;
+		if (element.isDisplayed() && element.getText().contains("Training1")) {
+			throw new AssertionError("Training1 element is displayed");
+		}
+		return true;
+		} catch (NoSuchElementException e) {
+		return true;
+		}
 	}
 	
 	public void clickSidebarProfileTrainingExercise1_Reps(String reps) {
@@ -310,6 +345,31 @@ public class LoggedPage extends BasePage{
 	public void clickSidebarProfileTrainingSend() {
 		sidebar_profile_training_exercise1_weight.click();
 	}
+	
+	public void chooseSidebarProfileTrainingWeightAndReps() {
+	    Select weight1Select = new Select(sidebar_profile_training_exercise1_weight);
+	    weight1Select.selectByValue("20");
+	    Select weight2Select = new Select(sidebar_profile_training_exercise2_weight);
+	    weight2Select.selectByValue("25");
+	    Select weight3Select = new Select(sidebar_profile_training_exercise3_weight);
+	    weight3Select.selectByValue("30");
+	    Select reps1Select = new Select(sidebar_profile_training_exercise1_reps);
+	    reps1Select.selectByValue("20");
+	    Select reps2Select = new Select(sidebar_profile_training_exercise2_reps);
+	    reps2Select.selectByValue("25");
+	    Select reps3Select = new Select(sidebar_profile_training_exercise3_reps);
+	    reps3Select.selectByValue("30");
+	}
+	
+	public void clickSidebarProfileTrainingDelete() {
+		sidebar_profile_training_delete.click();
+	}
+	
+	public boolean isTextPresentInProfileTraining(String trainingname) {
+	    String elementText = sidebar_profile_training.getText();
+	    return elementText.contains(trainingname);
+	}
+	
 	
 	//Add training functions
 
@@ -361,18 +421,12 @@ public class LoggedPage extends BasePage{
 		sidebar_profile_add_training_tr_add.click();
 	}
 	
-	public void addTrainingToProfile(String trainingname, String exercise1, String exercise2, String exercise3, String exercise4, String exercise5, String exercise6, String exercise7, String exercise8, String exercise9) {
+	public void addTrainingToProfile(String trainingname, String exercise1, String exercise2, String exercise3) {
 		clickSidebarProfileAddTraining();
 		sendkeys_to_SidebarProfileAddTrainingTrName(trainingname);
 		sendkeys_to_SidebarProfileAddTrainingTrExercise1(exercise1);
 		sendkeys_to_SidebarProfileAddTrainingTrExercise2(exercise2);
 		sendkeys_to_SidebarProfileAddTrainingTrExercise3(exercise3);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise4(exercise4);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise5(exercise5);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise6(exercise6);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise7(exercise7);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise8(exercise8);
-		sendkeys_to_SidebarProfileAddTrainingTrExercise9(exercise9);
 		clickSidebarProfileAddTrainingTrExerciseAdd();
 	}
 
@@ -392,6 +446,10 @@ public class LoggedPage extends BasePage{
 	
 	public void clickSidebarProfileTrainingHistoryObjectDateDelete() {
 		sidebar_profile_training_history_object_date_delete.click();
+	}
+	
+	public void checkSidebarProfileHistoryObjectDateTable_is_displayed() {
+		sidebar_profile_training_history_object_date_table.isDisplayed();
 	}
 	
 	//Training charts functions
@@ -414,9 +472,26 @@ public class LoggedPage extends BasePage{
 	
 	//Function for profile delete
 	
-	public void clickSidebarProfileDeleteProfile() {
-		sidebar_profile_delete_profile.click();
+	public void clickSidebarProfileDeleteProfile() throws InterruptedException {
+	    // sprawdŸ, czy sidebar_profile_training_history_object_date_delete jest nie-null
+	    if (sidebar_profile_delete_profile!= null) {
+	        // kliknij przycisk, który wywo³uje confirm()
+	        WebElement deleteButton = sidebar_profile_delete_profile;
+	        deleteButton.click();
+	        
+	        Thread.sleep(2000);
+	    }
 	}
+
+	
+	public void clickSidebarProfileDeleteProfileOk1() {
+		sidebar_profile_delete_profile.click();
+		
+
+
+	}
+	
+	
 	
 	//Functions for adding new profile
 	
@@ -463,12 +538,12 @@ public class LoggedPage extends BasePage{
 		sidebar_bmi_calculator_text_answer.isDisplayed();
 	}
 	
-	public void testSidebarBMICalculator(String weight, String height, String fat, String answer) {
+	public void testSidebarBMICalculator(Integer weight, Integer height, Integer fat) {
 		clickSidebarBMICalculator();
 		sendKeys_SidebarBMICalculator_Weight_Text(weight);
 		sendKeys_SidebarBMICalculator_Height_Text(height);
 		clickSidebarBMICalculatorTextSend();
-		SidebarBMICalculatorAnswerIsDisplayed(answer);
+		SidebarBMICalculatorAnswerIsDisplayed();
 	}
 	
 	//Calories
@@ -515,7 +590,7 @@ public class LoggedPage extends BasePage{
 		sidebar_calories_calculator_text_answer.isDisplayed();
 	}
 	
-	public void testSidebarCaloriesCalculator(String weight, String height, String age, String answer, String sex, String activity) {
+	public void testSidebarCaloriesCalculator(Integer weight, Integer height, Integer age, String answer, String sex, String activity) {
 		clickSidebarFFMICalculator();
 		sendKeys_SidebarCaloriesCalculator_Weight_Text(weight);
 		sendKeys_SidebarCaloriesCalculator_Height_Text(height);
@@ -552,13 +627,13 @@ public class LoggedPage extends BasePage{
 		sidebar_ffmi_calculator_text_answer.isDisplayed();
 	}
 	
-	public void testSidebarFFMICalculator(String weight, String height, String fat, String answer) {
+	public void testSidebarFFMICalculator(Integer weight, Integer height, Integer fat) {
 		clickSidebarFFMICalculator();
 		sendKeys_SidebarFFMICalculator_Weight_Text(weight);
 		sendKeys_SidebarFFMICalculator_Height_Text(height);
 		sendKeys_SidebarFFMICalculator_Fat_Text(fat);
 		clickSidebarFFMICalculatorTextSend();
-		SidebarFFMICalculatorAnswerIsDisplayed(answer);
+		SidebarFFMICalculatorAnswerIsDisplayed();
 	}
 	
 }
