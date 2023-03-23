@@ -22,6 +22,17 @@ public class LogoutSteps {
 		this.utility=utility;
 		this.driver=utility.driver;
 	}
+	
+	@When("user clicks {string} button")
+	public void user_clicks_button(String string) throws InterruptedException {
+		logged = utility.getLoggedPage();
+		logged.clickLogout();
+	}
+	@Then("user is navigated to the welcome page")
+	public void user_is_navigated_to_the_welcome_page() throws InterruptedException {
+		welcome = utility.getWelcomePage();
+		utility.driverTeardown(driver);
+	}
 
 
 }

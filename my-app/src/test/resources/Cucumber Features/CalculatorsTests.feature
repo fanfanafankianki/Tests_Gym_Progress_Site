@@ -20,13 +20,13 @@ Feature: Feature to test BMI, Calories and FFMI calculators
   Scenario: Check Calories calculator is working properly
     When user clicks Calories Calculator
     And user inputs <weight> and <height> and <age>
-    And user chooses sex <sex> and activity <activity> in dropbox
+    And user chooses sex and activity in dropbox
     And user clicks Calculate your caloric needs button
     Then Calories Calculator answer is displayed 
 
     Examples:  
-    | weight | height | age | sex    | activity        |
-    | 10     | 11     | 22  | Women  | Light activity  |
+    | weight | height | age |
+    | 10     | 11     | 22  |
 
     
 	@Calculators

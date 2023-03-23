@@ -66,10 +66,10 @@ public class CalculatorSteps {
 		logged.sendKeys_SidebarCaloriesCalculator_Age_Text(age);
 	}
 
-	@When("user chooses (.*) and (.*) in dropbox")
-	public void user_chooses_sex_and_activity_in_dropbox(String sex, String activity) {
-	    logged.choose_SidebarCaloriesCalculator_Activity(activity);
-	    logged.choose_SidebarCaloriesCalculator_Sex(sex);
+	@When("user chooses sex and activity in dropbox$")
+	public void user_chooses_sex_and_activity_in_dropbox() {
+	    logged.choose_SidebarCaloriesCalculator_Sex();
+	    logged.choose_SidebarCaloriesCalculator_Activity();
 	}
 	
 	@When("user clicks Calculate your caloric needs button")

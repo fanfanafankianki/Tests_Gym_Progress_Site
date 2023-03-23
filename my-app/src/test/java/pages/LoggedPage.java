@@ -286,6 +286,11 @@ public class LoggedPage extends BasePage{
 		sidebar_profile.click();
 	}
 	
+	public boolean isTextPresentInProfile(String profilename) {
+	    String elementText = sidebar_profile.getText();
+	    return elementText.contains(profilename);
+	}
+	
 	//Sidebar
 	
 	//Created profile functions
@@ -484,14 +489,22 @@ public class LoggedPage extends BasePage{
 		sidebar_calories_calculator_age_text.sendKeys(String.valueOf(age));
 	}
 	
-	public void choose_SidebarCaloriesCalculator_Sex(String sex) {
-	    Select genderSelect = new Select(sidebar_calories_calculator_sex);
-	    genderSelect.selectByValue(sex);
+	public void clickSidebarCaloriesCalculator_sex() {
+		sidebar_calories_calculator_sex.click();
 	}
 	
-	public void choose_SidebarCaloriesCalculator_Activity(String age) {
+	public void choose_SidebarCaloriesCalculator_Sex() {
+	    Select genderSelect = new Select(sidebar_calories_calculator_sex);
+	    genderSelect.selectByValue("female");
+	}
+	
+	public void clickSidebarCaloriesCalculator_activity() {
+		sidebar_calories_calculator_activity.click();
+	}
+	
+	public void choose_SidebarCaloriesCalculator_Activity() {
 	    Select ageSelect = new Select(sidebar_calories_calculator_activity);
-	    ageSelect.selectByValue(age);
+	    ageSelect.selectByValue("1.60");
 	}
 	
 	public void clickSidebarCaloriesCalculatorTextSend() {
