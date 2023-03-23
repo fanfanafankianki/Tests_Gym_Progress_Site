@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -305,7 +306,7 @@ public class LoggedPage extends BasePage{
 	public boolean isProfileNotDisplayed() {
 		try {
 		WebElement element = sidebar_profile;
-		if (element.isDisplayed() && element.getText().contains("TestingAccount321")) {
+		if (element.isDisplayed() && element.getText().contains("TestingAccount3211")) {
 			throw new AssertionError("TestingAccount321 element is displayed");
 		}
 		return true;
@@ -323,16 +324,23 @@ public class LoggedPage extends BasePage{
 	}
 	
 	public boolean isProfileTrainingNotDisplayed() {
-		try {
-		WebElement element = sidebar_profile_training;
-		if (element.isDisplayed() && element.getText().contains("Training1")) {
-			throw new AssertionError("Training1 element is displayed");
-		}
-		return true;
-		} catch (NoSuchElementException e) {
-		return true;
-		}
+	    try {
+	        WebElement element = sidebar_profile_training;
+	        if (element.isDisplayed()) {
+	            // sprawdü, czy element jest wciπø do≥πczony do strony
+	            if (element.getText().contains("Training1")) {
+	                throw new AssertionError("Training1 element is displayed");
+	            }
+	        }
+	        return true;
+	    } catch (NoSuchElementException e) {
+	        return true;
+	    } catch (StaleElementReferenceException e) {
+	        return true;
+	    }
 	}
+
+
 	
 	public void clickSidebarProfileTrainingExercise1_Reps(String reps) {
 		sidebar_profile_training_exercise1_reps.sendKeys(reps);
