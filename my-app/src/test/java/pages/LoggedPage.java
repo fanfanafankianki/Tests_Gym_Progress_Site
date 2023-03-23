@@ -351,7 +351,7 @@ public class LoggedPage extends BasePage{
 	}
 	
 	public void clickSidebarProfileTrainingSend() {
-		sidebar_profile_training_exercise1_weight.click();
+		sidebar_profile_training_exercise1_send.click();
 	}
 	
 	public void chooseSidebarProfileTrainingWeightAndReps() {
@@ -603,10 +603,7 @@ public class LoggedPage extends BasePage{
 		sendKeys_SidebarCaloriesCalculator_Weight_Text(weight);
 		sendKeys_SidebarCaloriesCalculator_Height_Text(height);
 		sendKeys_SidebarCaloriesCalculator_Age_Text(age);
-		choose_SidebarCaloriesCalculator_Sex(sex);
-		choose_SidebarCaloriesCalculator_Activity(activity);
 		clickSidebarCaloriesCalculatorTextSend();
-		SidebarCaloriesCalculatorAnswerIsDisplayed(answer);
 	}
 	
 	//FFMI

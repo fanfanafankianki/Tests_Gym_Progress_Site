@@ -48,6 +48,7 @@ public class ProfileVisibilitySteps {
 	@Given("user clicks Training history button")
 	public void user_clicks_training_history_button() throws InterruptedException {
 		logged = utility.getLoggedPage();
+		Thread.sleep(1500);
 		logged.clickSidebarProfileTrainingHistory();
 	}
 	
