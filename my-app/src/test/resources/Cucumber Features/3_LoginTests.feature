@@ -13,7 +13,7 @@ Feature: Feature to test login functionality
 
     Examples:  
     | username | password |
-    | Bartek | bartek |
+    | Bambik | Bambik |
     
 	@Login
   Scenario: Check login is unsuccesfull with invalid credentials

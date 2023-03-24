@@ -28,8 +28,8 @@ public class CalculatorSteps {
 		driver=utility.getDriver();
 		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 		welcome = utility.getWelcomePage();
-		welcome.enterLoginUsername("Bartek");
-		welcome.enterLoginPassword("Bartek");
+		welcome.enterLoginUsername("Bambik");
+		welcome.enterLoginPassword("Bambik");
 		welcome.clickLogin();
 		Thread.sleep(1000);
 		logged = utility.getLoggedPage();

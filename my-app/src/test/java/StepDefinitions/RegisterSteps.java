@@ -1,6 +1,12 @@
 package StepDefinitions;
 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import StepDefinitions.SeleniumUtility;
@@ -17,7 +23,8 @@ public class RegisterSteps {
 	WelcomePage welcome;
 	LoggedPage logged;
 	private SeleniumUtility utility;
-	
+	private int counter;
+
 	public RegisterSteps(StepDefinitions.SeleniumUtility utility) {
 		this.utility=utility;
 		this.driver=utility.driver;
@@ -33,11 +40,57 @@ public class RegisterSteps {
 
 	@When("user enter valid (.*) and (.*) and (.*)$")
 	public void user_enter_valid_username_and_email_and_password(String username, String email, String password) throws InterruptedException {
-		welcome = utility.getWelcomePage();
-		welcome.enterRegisterUsername(username);
-		welcome.enterRegisterEmail(email);
-		welcome.enterRegisterPassword(password);
+	    // Create file if not exists
+	    File counterFile = new File("src/test/java/StepDefinitions/counter.txt");
+	    if (!counterFile.exists()) {
+	        try {
+	            counterFile.createNewFile();
+	            FileWriter writer = new FileWriter(counterFile);
+	            writer.write("0");
+	            writer.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    // read counter from file
+	    try {
+	        BufferedReader reader = new BufferedReader(new FileReader(counterFile));
+	        String line = reader.readLine();
+	        if (line != null) {
+	            counter = Integer.parseInt(line.trim());
+	        }
+	        reader.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    // increment counter
+	    counter++;
+
+	    // add counter to username and email
+	    String formattedUsername = String.format("%s%d", username, counter);
+	    String[] emailParts = email.split("@");
+	    String formattedEmail = String.format("%s%d@%s", emailParts[0], counter, emailParts[1]);
+
+	    // enter valid credentials with updated username and email
+	    welcome = utility.getWelcomePage();
+	    welcome.enterRegisterUsername(formattedUsername);
+	    welcome.enterRegisterEmail(formattedEmail);
+	    welcome.enterRegisterPassword(password);
+
+	    // write updated counter to file
+	    try {
+	        FileWriter writer = new FileWriter(counterFile);
+	        writer.write(String.valueOf(counter));
+	        writer.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
+
+
 	
 	@When("user clicks register checkbox")
 	public void user_clicks_register_checkbox() throws InterruptedException {
