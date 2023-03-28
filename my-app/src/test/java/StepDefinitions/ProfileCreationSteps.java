@@ -3,13 +3,14 @@ package StepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 
-import StepDefinitions.SeleniumUtility;
+import StepDefinitions.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.WelcomePage;
 import pages.LoggedPage;
+
 
 public class ProfileCreationSteps {
 	

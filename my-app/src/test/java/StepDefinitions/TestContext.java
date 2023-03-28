@@ -8,16 +8,26 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import pages.WelcomePage;
+import pages.BasePage;
 import pages.LoggedPage;
+import pages.WelcomePage;
 
-public class SeleniumUtility {
+//
+//Class for dependency injection
+//
+
+public class TestContext {
+	
 	public WebDriver driver;
-	public WelcomePage welcome;
+	
+	public BasePage base;
 	public LoggedPage logged;
+	public WelcomePage welcome;
+
+
 
 	
-	
+    // Driver methods
     public WebDriver getDriver() {
         if (driver == null) {
             // Chromedriver path in system
@@ -51,14 +61,20 @@ public class SeleniumUtility {
         driver.close();
         driver.quit();
     }
-    
+	
 	//Methods for page objects creation 
 
-	public WelcomePage getWelcomePage() throws InterruptedException{
-	      return (welcome == null) ? welcome = new WelcomePage(driver) : welcome;
+	public BasePage getBasePage() throws InterruptedException{
+	      return (base == null) ? base = new BasePage(driver) : base;
 	      }
 	
 	public LoggedPage getLoggedPage() throws InterruptedException{
 	      return (logged == null) ? logged = new LoggedPage(driver) : logged;
 	      }
+	
+	public WelcomePage getWelcomePage() throws InterruptedException{
+	      return (welcome == null) ? welcome = new WelcomePage(driver) : welcome;
+	      }
+	
+
 }
