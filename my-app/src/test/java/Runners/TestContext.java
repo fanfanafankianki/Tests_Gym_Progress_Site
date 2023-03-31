@@ -38,14 +38,16 @@ public class TestContext {
             // WebDriverManager keeps chromedriver version up to date
             WebDriverManager.chromedriver().setup();
 
-            // Set ChromeOptions
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--no-sandbox");
+            options.addArguments("--verbose");
+            options.addArguments("--whitelisted-ips=''");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
             options.addArguments("--disable-extensions");
             options.addArguments("--remote-debugging-port=0");
-            options.addArguments("--headless"); // Dodaj tê opcjê, jeœli uruchamiasz testy w trybie bez g³owy
+            options.addArguments("--display=" + System.getenv("DISPLAY"));
+
+
 
             // initialize the driver
             driver = new ChromeDriver(options);
