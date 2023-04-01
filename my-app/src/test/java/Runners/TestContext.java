@@ -46,7 +46,6 @@ public class TestContext {
             options.addArguments("--disable-extensions");
             options.addArguments("--remote-debugging-port=0");
             options.addArguments("--headless");
-            options.addArguments("--display=" + System.getenv("DISPLAY"));
 
 
 
