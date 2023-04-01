@@ -16,7 +16,7 @@ public class WelcomePage extends BasePage{
 		super(driver);
 		PageFactory.initElements(driver, this);
 		Thread.sleep(1000);
-		if(!driver.getCurrentUrl().equals("http://host.docker.internal/Gym_Site/welcome.php")) {
+		if(!driver.getCurrentUrl().endsWith("/welcome.php")) {
 			throw new IllegalStateException("This is not welcome page! The current page is " + driver.getCurrentUrl());
 		}
 

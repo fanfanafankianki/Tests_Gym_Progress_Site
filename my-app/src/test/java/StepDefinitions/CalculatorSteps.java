@@ -26,7 +26,7 @@ public class CalculatorSteps {
 	@Given("user is on logged page")
 	public void user_is_on_logged_page() throws InterruptedException {
 		driver=utility.getDriver();
-		driver.navigate().to("http://host.docker.internal/Gym_Site/logged.php");
+		driver.navigate().to("http://localhost/Gym_Site/logged.php");
 		welcome = utility.getWelcomePage();
 		welcome.enterLoginUsername("Bambik");
 		welcome.enterLoginPassword("Bambik");

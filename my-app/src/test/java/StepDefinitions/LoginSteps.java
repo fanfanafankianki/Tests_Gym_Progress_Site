@@ -26,7 +26,7 @@ public class LoginSteps {
 	@Given("user is on welcome page")
 	public void user_is_on_welcome_page() throws InterruptedException {
 		driver=utility.getDriver();
-		driver.navigate().to("http://host.docker.internal/Gym_Site/welcome.php");
+		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 	}
 	
 	@When("user enters invalid (.*) and (.*)$")
