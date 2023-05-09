@@ -14,7 +14,7 @@ Feature: Feature to test register functionality
 
     Examples:  
     | username | email | password |
-    | User | User@gmail.com | kukuaruku |
+    | Bambik | User@gmail.com | Bambik |
     
 	@Register
   Scenario: Check register is unsuccesfull with invalid credentials
