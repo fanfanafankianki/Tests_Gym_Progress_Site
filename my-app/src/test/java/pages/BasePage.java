@@ -28,6 +28,10 @@ public class BasePage {
 	@CacheLookup
 	WebElement site_icon;
 	
+	@FindBy(xpath="//i[@onclick='sidebar_close()']")
+	@CacheLookup
+	WebElement site_icon_x;
+	
 	//Footer
 	
 	@FindBy(xpath="//input[@id=\"Name_footer\"]")
@@ -65,8 +69,16 @@ public class BasePage {
 		site_icon.isDisplayed();
 	}
 	
+	public void siteIconX_IsDisplayed() {
+		site_icon_x.isDisplayed();
+	}
+	
 	public void clickSiteIcon() {
 		site_icon.click();
+	}
+	
+	public void clickSiteIconX() {
+		site_icon_x.click();
 	}
 
 	public void sendKeys_FooterName(String name) {

@@ -26,6 +26,7 @@ public class LogoutSteps {
 	@When("user clicks {string} button")
 	public void user_clicks_button(String string) throws InterruptedException {
 		logged = utility.getLoggedPage();
+		logged.clickSiteIconX();
 		logged.clickLogout();
 	}
 	@Then("user is navigated to the welcome page")

@@ -26,8 +26,9 @@ public class CalculatorSteps {
 	@Given("user is on logged page")
 	public void user_is_on_logged_page() throws InterruptedException {
 		driver=utility.getDriver();
-		driver.navigate().to("http://localhost/Gym_Site/logged.php");
+		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 		welcome = utility.getWelcomePage();
+		welcome.clickSiteIconX();
 		welcome.enterLoginUsername("Bambik");
 		welcome.enterLoginPassword("Bambik");
 		welcome.clickLogin();
@@ -46,6 +47,7 @@ public class CalculatorSteps {
 	}
 	@When("user clicks Calculate BMI button")
 	public void user_clicks_calculate_bmi_button() {
+		logged.clickSiteIconX();
 		logged.clickSidebarBMICalculatorTextSend();
 	}
 	@Then("BMI Calculator answer is displayed")
@@ -74,6 +76,7 @@ public class CalculatorSteps {
 	
 	@When("user clicks Calculate your caloric needs button")
 	public void user_clicks_calculate_your_caloric_needs_button() {
+		logged.clickSiteIconX();
 		logged.clickSidebarCaloriesCalculatorTextSend();
 	}
 	
@@ -87,8 +90,10 @@ public class CalculatorSteps {
 	public void user_clicks_ffmi_calculator() {
 		logged.clickSidebarFFMICalculator();
 	}
+	
 	@When("user clicks Calculate FFMI button")
 	public void user_clicks_calculate_ffmi_button() {
+		logged.clickSiteIconX();
 		logged.clickSidebarFFMICalculatorTextSend();
 	}
 

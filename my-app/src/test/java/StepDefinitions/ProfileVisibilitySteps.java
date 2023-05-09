@@ -31,6 +31,7 @@ public class ProfileVisibilitySteps {
 	
 	@When("user clicks Training1")
 	public void user_clicks_training1() {
+		logged.clickSiteIconX();
 		logged.clickSidebarProfileChartsObject();
 	}
 	
@@ -54,6 +55,7 @@ public class ProfileVisibilitySteps {
 	
 	@When("user click trainingname")
 	public void user_click_training() {
+		logged.clickSiteIconX();
 		logged.clickSidebarProfileTrainingHistoryObject();
 	}
 	

@@ -37,6 +37,7 @@ public class ProfileCreationSteps {
 	
 	@When("clicks Add new profile button")
 	public void clicks_add_new_profile_button() {
+		logged.clickSiteIconX();
 		logged.clickSidebarAddProfileTextSend();
 	}
 	
@@ -72,6 +73,7 @@ public class ProfileCreationSteps {
 	public void user_clicks_trening1_button() throws InterruptedException {
 		logged = utility.getLoggedPage();
 		Thread.sleep(1000);
+		logged.clickSiteIconX();
 		logged.clickSidebarProfileTraining();
 	}
 	

@@ -95,6 +95,7 @@ public class RegisterSteps {
 	@When("user clicks register checkbox")
 	public void user_clicks_register_checkbox() throws InterruptedException {
 		welcome = utility.getWelcomePage();
+		welcome.clickSiteIconX();
 		welcome.clickCheckboxRegister();
 	}
 

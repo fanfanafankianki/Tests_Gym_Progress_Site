@@ -70,6 +70,7 @@ public class ProfileDeletionSteps {
 	
 	@When("user clicks Delete this training! and clicks Ok in first and second checkbox")
 	public void user_clicks_delete_this_training_and_clicks_ok_in_first_and_second_checkbox() throws InterruptedException {
+		logged.clickSiteIconX();
 		logged.clickSidebarProfileTrainingDelete();
         Alert alert = driver.switchTo().alert();
         alert.accept();

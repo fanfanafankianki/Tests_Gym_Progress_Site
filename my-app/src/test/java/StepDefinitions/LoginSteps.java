@@ -45,6 +45,7 @@ public class LoginSteps {
 
 	@And("click on login button")
 	public void click_on_login_button() throws InterruptedException {
+		welcome.clickSiteIconX();
 		welcome.clickLogin();
 		Thread.sleep(4000);
 
