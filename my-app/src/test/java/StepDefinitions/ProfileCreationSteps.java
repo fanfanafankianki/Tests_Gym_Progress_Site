@@ -60,6 +60,7 @@ public class ProfileCreationSteps {
 	
 	@When("user insert training informations into textboxes")
 	public void user_insert_training_informations_into_textboxes() {
+		logged.clickSiteIconX();
 		logged.addTrainingToProfile("Training1","Exercise1","Exercise2","Exercise3");
 	}
 	
