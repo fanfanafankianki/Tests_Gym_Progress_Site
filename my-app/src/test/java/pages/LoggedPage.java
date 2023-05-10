@@ -117,7 +117,7 @@ public class LoggedPage extends BasePage{
 	@CacheLookup
 	WebElement sidebar_profile_add_training_tr_exercise9;
 		
-	@FindBy(xpath="//input[@type=\"submit\" and @name=\"insertTrainingWithExercises\"]")
+	@FindBy(xpath="//input[@type=\"submit\" and @name=\"SendTrainingWithExercises\"]")
 	@CacheLookup
 	WebElement sidebar_profile_add_training_tr_add;
 	
@@ -431,6 +431,7 @@ public class LoggedPage extends BasePage{
 	
 	public void addTrainingToProfile(String trainingname, String exercise1, String exercise2, String exercise3) {
 		clickSidebarProfileAddTraining();
+		clickSiteIconX();
 		sendkeys_to_SidebarProfileAddTrainingTrName(trainingname);
 		sendkeys_to_SidebarProfileAddTrainingTrExercise1(exercise1);
 		sendkeys_to_SidebarProfileAddTrainingTrExercise2(exercise2);
