@@ -60,7 +60,6 @@ public class ProfileCreationSteps {
 	
 	@When("user insert training informations into textboxes")
 	public void user_insert_training_informations_into_textboxes() {
-		logged.clickSiteIconX();
 		logged.addTrainingToProfile("Training1","Exercise1","Exercise2","Exercise3");
 	}
 	
@@ -74,12 +73,12 @@ public class ProfileCreationSteps {
 	public void user_clicks_trening1_button() throws InterruptedException {
 		logged = utility.getLoggedPage();
 		Thread.sleep(1000);
-		logged.clickSiteIconX();
 		logged.clickSidebarProfileTraining();
 	}
 	
 	@When("user insert training history informations into chooseboxes")
 	public void user_insert_training_history_informations_into_chooseboxes() {
+		logged.clickSiteIconX();
 		logged.chooseSidebarProfileTrainingWeightAndReps();
 	}
 	
