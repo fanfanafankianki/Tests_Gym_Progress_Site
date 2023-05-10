@@ -26,5 +26,5 @@ Feature: Feature to test register functionality
     	
     Examples:  
     | username | email | password |
-    | TestingAcc1 | User@gmail.com | kuskuruku |
+    | Bambik11 | User11@gmail.com | Bambik |
     

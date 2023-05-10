@@ -29,8 +29,8 @@ public class CalculatorSteps {
 		driver.navigate().to("http://localhost/Gym_Site/welcome.php");
 		welcome = utility.getWelcomePage();
 		welcome.clickSiteIconX();
-		welcome.enterLoginUsername("Bambik");
-		welcome.enterLoginPassword("Bambik");
+		welcome.enterLoginUsername("Bambik11");
+		welcome.enterLoginPassword("Bambik11");
 		welcome.clickLogin();
 		Thread.sleep(1000);
 		logged = utility.getLoggedPage();
