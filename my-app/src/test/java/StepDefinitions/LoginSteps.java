@@ -32,7 +32,7 @@ public class LoginSteps {
 	@Given("user is on welcome page")
 	public void user_is_on_welcome_page() throws InterruptedException {
 		driver=utility.getDriver();
-		driver.navigate().to("http://3.250.187.54/welcome.php");
+		driver.navigate().to("http://34.249.107.106/welcome.php");
 	}
 	
 	@When("user enters invalid (.*) and (.*)$")
