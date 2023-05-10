@@ -117,7 +117,7 @@ public class LoggedPage extends BasePage{
 	@CacheLookup
 	WebElement sidebar_profile_add_training_tr_exercise9;
 		
-	@FindBy(xpath="//input[@type=\"submit\" and @name=\"SendTrainingWithExercises\"]")
+	@FindBy(xpath="//input[@type=\"submit\" and @name=\"insertTrainingWithExercises\"]")
 	@CacheLookup
 	WebElement sidebar_profile_add_training_tr_add;
 	
