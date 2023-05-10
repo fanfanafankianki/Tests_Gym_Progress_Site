@@ -30,7 +30,7 @@ public class CalculatorSteps {
 		welcome = utility.getWelcomePage();
 		welcome.clickSiteIconX();
 		welcome.enterLoginUsername("Bambik11");
-		welcome.enterLoginPassword("Bambik11");
+		welcome.enterLoginPassword("Bambik");
 		welcome.clickLogin();
 		Thread.sleep(1000);
 		logged = utility.getLoggedPage();
