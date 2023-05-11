@@ -88,7 +88,8 @@ public class ProfileDeletionSteps {
 	}
 	
 	@Then("user is redirected to logged page training name is not displayed")
-	public void user_is_redirected_to_logged_page_training_name_is_not_displayed() {
+	public void user_is_redirected_to_logged_page_training_name_is_not_displayed() throws InterruptedException {
+        Thread.sleep(2000);
 		logged.isProfileTrainingNotDisplayed();
 		utility.driverTeardown(driver);
 	}
