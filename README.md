@@ -44,7 +44,7 @@ To run the functional tests for the Powertrckr site, follow these steps:
 * Set Up Maven: Install maven regarding to official maven documentation.
 * Add Cucumber dependency to your project: To use Cucumber in your project, you need to add the appropriate dependency to your project's build config file.
 * Configure Test Environment: Update the configuration file or test class with the necessary settings, such as the URL of the Powertrckr site and the credentials for the test user.
-* Run the Tests: Use your preferred integrated development environment (IDE) or build tool to run the functional tests. Ensure that the Selenium WebDriver is properly configured and accessible. You can use "maven test" command to run tests.
+* Run the Tests: Use your preferred integrated development environment (IDE) or build tool to run the functional tests. Ensure that the Selenium WebDriver is properly configured and accessible. You can use "mvn test" command to run tests.
 
 By following these installation steps, you will be able to set up and run tests for the Powertrckr site using Java and Selenium technologies.
 
