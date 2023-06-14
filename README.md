@@ -5,7 +5,9 @@
 
 This project are functional tests created to test functions of Powertrckr site. 
 
-It uses Java and Selenium technologies and checks most important functions - registration of new users, login, creating or editing trainings or training history. 
+It uses Java and Selenium technologies with Cucumber and Gherkin language and checks most important functions - registration of new users, login, creating or editing trainings or training history. 
+
+This repository also contains Dockerfile for creating container for headless execution. 
 
 <!-- FUNCTIONS -->
 ## Functions
@@ -27,6 +29,9 @@ By implementing these functional tests, the project ensures that the Powertrckr 
 Technologies used to create this tests:
 * ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
 * ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+* ![Gherkin](https://img.shields.io/badge/Gherkin-5B2063?style=for-the-badge)
+* ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge)
+* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 <!-- INSTALLATION -->
 ## Installation
@@ -37,6 +42,7 @@ To run the functional tests for the Powertrckr site, follow these steps:
 * Set Up Java Development Environment: Ensure that you have Java Development Kit (JDK) installed on your machine. You can download the latest JDK from the official Oracle website and follow the installation instructions.
 * Set Up Selenium WebDriver: Download the Selenium WebDriver for Java from the official Selenium website and add the WebDriver binaries to your project's classpath.
 * Set Up Maven: Install maven regarding to official maven documentation.
+* Add Cucumber dependency to your project: To use Cucumber in your project, you need to add the appropriate dependency to your project's build config file.
 * Configure Test Environment: Update the configuration file or test class with the necessary settings, such as the URL of the Powertrckr site and the credentials for the test user.
 * Run the Tests: Use your preferred integrated development environment (IDE) or build tool to run the functional tests. Ensure that the Selenium WebDriver is properly configured and accessible. You can use "maven test" command to run tests.
 
